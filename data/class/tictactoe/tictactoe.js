@@ -14,7 +14,7 @@ class Game {
         if(!options.player_two) throw new TypeError("Second player is a required option")
         this.player_two = options.player_two;
         this.message = options.message;
-        this.grid = [':white_large_square:', ':white_large_square:', ':white_large_square:', ':white_large_square:', ':white_large_square:', ':white_large_square:', ':white_large_square:', ':white_large_square:', ':white_large_square:']
+        this.grid = ['⬛','⬛','⬛','⬛','⬛','⬛','⬛','⬛','⬛']
         this.ttt_grid()
         this.reactions = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣']
         this.players_go = 0
@@ -52,7 +52,7 @@ class Game {
                     if (this.reaction == '7️⃣') this.user_input = 6
                     if (this.reaction == '8️⃣') this.user_input = 7
                     if (this.reaction == '9️⃣') this.user_input = 8
-                    this.grid[this.user_input] = ':negative_squared_cross_mark:'
+                    this.grid[this.user_input] = ':x:'
                     const userReactions = this.ttt_message.reactions.cache.filter(reaction => reaction.users.cache.has(this.message.author.id));
                     for (const reaction of userReactions.values()) {
                     await reaction.users.remove(this.message.author.id);
@@ -83,7 +83,7 @@ class Game {
                         if (this.reaction == '7️⃣') this.user_input = 6
                         if (this.reaction == '8️⃣') this.user_input = 7
                         if (this.reaction == '9️⃣') this.user_input = 8
-                        this.grid[this.user_input] = ':regional_indicator_o:'
+                        this.grid[this.user_input] = ':o:'
                         const userReactions = this.ttt_message.reactions.cache.filter(reaction => reaction.users.cache.has(this.player_two.id));
                         for (const reaction of userReactions.values()) {
                         await reaction.users.remove(this.player_two.id);
@@ -118,12 +118,12 @@ class Game {
         let step_one = -1
         while (step_one < 7) {
             step_one++
-            if (this.grid[win_combinations[step_one][0]] == ':negative_squared_cross_mark:' && this.grid[win_combinations[step_one][1]] == ':negative_squared_cross_mark:' && this.grid[win_combinations[step_one][2]] == ':negative_squared_cross_mark:') {
+            if (this.grid[win_combinations[step_one][0]] == ':x:' && this.grid[win_combinations[step_one][1]] == ':x:' && this.grid[win_combinations[step_one][2]] == ':x:') {
                 let grid = await this.ttt_grid()
                 this.ttt_message.edit('<@' + this.message.author.id + '> Won!\n' + grid)
                 this.end_game(this.player_two, this.message)
             }
-            if (this.grid[win_combinations[step_one][0]] == ':regional_indicator_o:' && this.grid[win_combinations[step_one][1]] == ':regional_indicator_o:' && this.grid[win_combinations[step_one][2]] == ':regional_indicator_o:') {
+            if (this.grid[win_combinations[step_one][0]] == ':o:' && this.grid[win_combinations[step_one][1]] == ':o:' && this.grid[win_combinations[step_one][2]] == ':o:') {
                 let grid = await this.ttt_grid()
                 this.ttt_message.edit('<@' + this.player_two.id + '> Won!\n' + grid)
                 this.end_game(this.player_two, this.message)
