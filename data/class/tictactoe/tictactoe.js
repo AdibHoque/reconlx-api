@@ -31,13 +31,13 @@ class Game {
                 if (this.send_message == true) {
                     let grid = await this.ttt_grid()
                     if (this.players_go == 0) {
-                        this.ttt_message =  await this.message.channel.send('<@' + this.message.author.id + '> it is your turn\n' + grid)
+                        this.ttt_message =  await this.message.channel.send('<@' + this.message.author.id + '> it is your turn\n\n' + grid + '\n\n' +this.message.author.username +': :x:\n' + this.player_two.user.username + ': :o:')
                         for (let i in this.reactions) {
                             this.ttt_message.react(this.reactions[i])
                         }
                     }
                     else {
-                        this.ttt_message.edit('<@' + this.message.author.id + '> it is your turn\n\n' + grid + this.message.author.username +': :x:\n' + this.player_two.user.username)
+                        this.ttt_message.edit('<@' + this.message.author.id + '> it is your turn\n\n' + grid + '\n\n' + this.message.author.username +': :x:\n' + this.player_two.user.username + ': :o:')
                     }
                 }
                 this.ttt_message.awaitReactions((reaction, user) => user.id == this.message.author.id && (reaction.emoji.name == '🇦' || reaction.emoji.name == '🇧' || reaction.emoji.name == '🇨' || reaction.emoji.name == '🇩' || reaction.emoji.name == '🇪' || reaction.emoji.name == '🇫' || reaction.emoji.name == '🇬' || reaction.emoji.name == '🇭' || reaction.emoji.name == '🇮'),
@@ -70,7 +70,7 @@ class Game {
             if (this.players_go % 2  == 1) {
                 if (this.send_message == true) {
                     let grid = await this.ttt_grid()
-                    this.ttt_message.edit('<@' + this.player_two.id + '> it is your turn\n\n' + grid)
+                    this.ttt_message.edit('<@' + this.player_two.id + '> it is your turn\n\n' + grid + '\n\n' + this.message.author.username +': :x:\n' + this.player_two.user.username + ': :o:')
                     this.ttt_message.awaitReactions((reaction, user) => user.id == this.player_two.id && (reaction.emoji.name == '🇦' || reaction.emoji.name == '🇧' || reaction.emoji.name == '🇨' || reaction.emoji.name == '🇩' || reaction.emoji.name == '🇪' || reaction.emoji.name == '🇫' || reaction.emoji.name == '🇬' || reaction.emoji.name == '🇭' || reaction.emoji.name == '🇮'),
                     { max: 1, time: 30000 }).then(async collected => {
                         this.reaction = collected.first().emoji.name
