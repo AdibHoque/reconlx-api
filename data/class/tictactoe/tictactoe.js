@@ -14,9 +14,9 @@ class Game {
         if(!options.player_two) throw new TypeError("Second player is a required option")
         this.player_two = options.player_two;
         this.message = options.message;
-        this.grid = ['⬛','⬛','⬛','⬛','⬛','⬛','⬛','⬛','⬛']
+        this.grid = ['🇦','🇧','🇨','🇩','🇪','🇫','🇬','🇭','🇮']
         this.ttt_grid()
-        this.reactions = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣']
+        this.reactions = ['🇦', '🇧', '🇨', '🇩', '🇪', '🇫', '🇬', '🇭', '🇮']
         this.players_go = 0
         this.send_message = true
         this.playing_game = true
@@ -40,18 +40,18 @@ class Game {
                         this.ttt_message.edit('<@' + this.message.author.id + '> it is your turn\n' + grid)
                     }
                 }
-                this.ttt_message.awaitReactions((reaction, user) => user.id == this.message.author.id && (reaction.emoji.name == '1️⃣' || reaction.emoji.name == '2️⃣' || reaction.emoji.name == '3️⃣' || reaction.emoji.name == '4️⃣' || reaction.emoji.name == '5️⃣' || reaction.emoji.name == '6️⃣' || reaction.emoji.name == '7️⃣' || reaction.emoji.name == '8️⃣' || reaction.emoji.name == '9️⃣'),
+                this.ttt_message.awaitReactions((reaction, user) => user.id == this.message.author.id && (reaction.emoji.name == '🇦' || reaction.emoji.name == '🇧' || reaction.emoji.name == '🇨' || reaction.emoji.name == '🇩' || reaction.emoji.name == '🇪' || reaction.emoji.name == '🇫' || reaction.emoji.name == '🇬' || reaction.emoji.name == '🇭' || reaction.emoji.name == '🇮'),
                 { max: 1, time: 3000000 }).then(async collected => {
                     this.reaction = collected.first().emoji.name
-                    if (this.reaction == '1️⃣') this.user_input = 0
-                    if (this.reaction == '2️⃣') this.user_input = 1
-                    if (this.reaction == '3️⃣') this.user_input = 2
-                    if (this.reaction == '4️⃣') this.user_input = 3
-                    if (this.reaction == '5️⃣') this.user_input = 4
-                    if (this.reaction == '6️⃣') this.user_input = 5
-                    if (this.reaction == '7️⃣') this.user_input = 6
-                    if (this.reaction == '8️⃣') this.user_input = 7
-                    if (this.reaction == '9️⃣') this.user_input = 8
+                    if (this.reaction == '🇦') this.user_input = 0
+                    if (this.reaction == '🇧') this.user_input = 1
+                    if (this.reaction == '🇨') this.user_input = 2
+                    if (this.reaction == '🇩') this.user_input = 3
+                    if (this.reaction == '🇪') this.user_input = 4
+                    if (this.reaction == '🇫') this.user_input = 5
+                    if (this.reaction == '🇬') this.user_input = 6
+                    if (this.reaction == '🇭') this.user_input = 7
+                    if (this.reaction == '🇮') this.user_input = 8
                     this.grid[this.user_input] = ':x:'
                     const userReactions = this.ttt_message.reactions.cache.filter(reaction => reaction.users.cache.has(this.message.author.id));
                     for (const reaction of userReactions.values()) {
@@ -71,18 +71,18 @@ class Game {
                 if (this.send_message == true) {
                     let grid = await this.ttt_grid()
                     this.ttt_message.edit('<@' + this.player_two.id + '> it is your turn\n' + grid)
-                    this.ttt_message.awaitReactions((reaction, user) => user.id == this.player_two.id && (reaction.emoji.name == '1️⃣' || reaction.emoji.name == '2️⃣' || reaction.emoji.name == '3️⃣' || reaction.emoji.name == '4️⃣' || reaction.emoji.name == '5️⃣' || reaction.emoji.name == '6️⃣' || reaction.emoji.name == '7️⃣' || reaction.emoji.name == '8️⃣' || reaction.emoji.name == '9️⃣'),
+                    this.ttt_message.awaitReactions((reaction, user) => user.id == this.player_two.id && (reaction.emoji.name == '🇦' || reaction.emoji.name == '🇧' || reaction.emoji.name == '🇨' || reaction.emoji.name == '🇩' || reaction.emoji.name == '🇪' || reaction.emoji.name == '🇫' || reaction.emoji.name == '🇬' || reaction.emoji.name == '🇭' || reaction.emoji.name == '🇮'),
                     { max: 1, time: 30000 }).then(async collected => {
                         this.reaction = collected.first().emoji.name
-                        if (this.reaction == '1️⃣') this.user_input = 0
-                        if (this.reaction == '2️⃣') this.user_input = 1
-                        if (this.reaction == '3️⃣') this.user_input = 2
-                        if (this.reaction == '4️⃣') this.user_input = 3
-                        if (this.reaction == '5️⃣') this.user_input = 4
-                        if (this.reaction == '6️⃣') this.user_input = 5
-                        if (this.reaction == '7️⃣') this.user_input = 6
-                        if (this.reaction == '8️⃣') this.user_input = 7
-                        if (this.reaction == '9️⃣') this.user_input = 8
+                        if (this.reaction == '🇦') this.user_input = 0
+                        if (this.reaction == '🇧') this.user_input = 1
+                        if (this.reaction == '🇨') this.user_input = 2
+                        if (this.reaction == '🇩') this.user_input = 3
+                        if (this.reaction == '🇪') this.user_input = 4
+                        if (this.reaction == '🇫') this.user_input = 5
+                        if (this.reaction == '🇬') this.user_input = 6
+                        if (this.reaction == '🇭') this.user_input = 7
+                        if (this.reaction == '🇮') this.user_input = 8
                         this.grid[this.user_input] = ':o:'
                         const userReactions = this.ttt_message.reactions.cache.filter(reaction => reaction.users.cache.has(this.player_two.id));
                         for (const reaction of userReactions.values()) {
@@ -102,7 +102,7 @@ class Game {
         }
     }
     async ttt_grid() {
-            return `${this.grid[0]}${this.grid[1]}${this.grid[2]}\n${this.grid[3]}${this.grid[4]}${this.grid[5]}\n${this.grid[6]}${this.grid[7]}${this.grid[8]}`
+            return `${this.grid[0]} ${this.grid[1]} ${this.grid[2]}\n${this.grid[3]} ${this.grid[4]} ${this.grid[5]}\n${this.grid[6]} ${this.grid[7]} ${this.grid[8]}`
     }
     async eval_win() {
         const win_combinations = [
