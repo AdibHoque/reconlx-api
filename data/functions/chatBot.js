@@ -1,3 +1,5 @@
+const { MessageEmbed } = require("discord.js")
+
 async function chatBot(message, input, uuid = 0101) {
     if (!message)
         throw new ReferenceError('reconlx => "message" is not defined');
@@ -10,7 +12,15 @@ async function chatBot(message, input, uuid = 0101) {
     )
         .then((res) => res.json())
         .then(async (json) => {
-            return message.reply(json.response);
+            var Google = ["#0F9D58", "#DB4437", "#4285F4", "#FFBF00"];
+      var gcolor = Google[Math.round(Math.random() * (Google.length - 1))];
+      const embed = new MessageEmbed()
+        .setColor(gcolor)
+        .setFooter(
+          `${json.response}`,
+          "https://cdn.discordapp.com/emojis/646994210939076618.gif"
+        );
+     return message.channel.send(`${message.author}`, embed);
         });
 }
 module.exports = chatBot;
