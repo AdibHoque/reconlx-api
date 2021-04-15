@@ -9,7 +9,7 @@ async function EmbedPages(message, pages, pageTravel = false, emoji = ['âª', 'â
     if(typeof time !== "number") throw new ReferenceError('reconlx => typeof "time" must be a number')
     if(message.guild.me.hasPermission('MANAGE_MESSAGES')) {
         message.channel.send(pages[0]).then(async msg => {
-            const ms1 = await message.channel.send(`Page 1 / ${pages.length}`)
+            //const ms1 = await message.channel.send(`Page 1 / ${pages.length}`)
             await msg.react(emoji[0])
             await msg.react(emoji[1])
     
@@ -23,12 +23,12 @@ async function EmbedPages(message, pages, pageTravel = false, emoji = ['âª', 'â
                 case emoji[0] :
                     if(i === 0) return;
                     i--;
-                    ms1.edit(`Page ${i + 1} / ${pages.length}`)
+                    //ms1.edit(`Page ${i + 1} / ${pages.length}`)
                     break;
                 case emoji[1] :
                     if(i === pages.length - 1) return;
                     i++;
-                    ms1.edit(`Page ${i + 1} / ${pages.length}`)
+                    //ms1.edit(`Page ${i + 1} / ${pages.length}`)
                     break;
             }
             await msg.edit(pages[i])})
@@ -42,7 +42,7 @@ async function EmbedPages(message, pages, pageTravel = false, emoji = ['âª', 'â
                 if(b > 0 && b - 1 <=  pages.length) {
                     i = b -1
                     msg.edit(pages[b -1])
-                    ms1.edit(`Page ${b} / ${pages.length}`)
+                    //ms1.edit(`Page ${b} / ${pages.length}`)
                 }
                 
             })   
@@ -62,7 +62,7 @@ async function EmbedPages(message, pages, pageTravel = false, emoji = ['âª', 'â
         })
     } else {
         message.channel.send(pages[0]).then(async msg => {
-            const ms1 = await message.channel.send(`Page 1 / ${pages.length}`)
+            //const ms1 = await message.channel.send(`Page 1 / ${pages.length}`)
             await msg.react(emoji[0])
             await msg.react(emoji[1])
     
@@ -75,11 +75,11 @@ async function EmbedPages(message, pages, pageTravel = false, emoji = ['âª', 'â
                 case emoji[0] :
                     if(i === 0) return;
                     i--;
-                    ms1.edit(`Page ${i + 1} / ${pages.length}`)
+                  //  ms1.edit(`Page ${i + 1} / ${pages.length}`)
                     break;
                 case emoji[1] :
                     if(i === pages.length - 1) return;
-                    ms1.edit(`Page ${i + 1} / ${pages.length}`)
+                 //   ms1.edit(`Page ${i + 1} / ${pages.length}`)
                     i++;
                     break;
             }
@@ -94,7 +94,7 @@ async function EmbedPages(message, pages, pageTravel = false, emoji = ['âª', 'â
                 if(b > 0 && b - 1 <=  pages.length) {
                     i = b -1
                     msg.edit(pages[b -1])
-                    ms1.edit(`Page ${b} / ${pages.length}`)
+                   // ms1.edit(`Page ${b} / ${pages.length}`)
                 }
                 
             }).catch(err =>  msg.reactions.removeAll());
