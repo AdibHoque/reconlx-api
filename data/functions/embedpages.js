@@ -31,7 +31,8 @@ async function EmbedPages(message, pages, pageTravel = false, emoji = ['âª', 'â
                     //ms1.edit(`Page ${i + 1} / ${pages.length}`)
                     break;
             }
-            await msg.edit(pages[i])})
+            msg.edit(pages[i])
+    })
         collector.on('end', () => msg.reactions.removeAll());
         if(pageTravel === true) {
             message.channel.createMessageCollector(x => x.author.id === message.author.id, {time : time, errors : ['time']}).on('collect', async(data) => {
