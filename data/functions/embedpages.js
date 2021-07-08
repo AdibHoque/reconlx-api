@@ -31,7 +31,7 @@ async function EmbedPages(message, pages, pageTravel = false, emoji = ['âª', 'â
                     //ms1.edit(`Page ${i + 1} / ${pages.length}`)
                     break;
             }
-            msg.edit(pages[i])
+            await msg.edit(pages[i])
     })
         collector.on('end', () => msg.reactions.removeAll());
         if(pageTravel === true) {
